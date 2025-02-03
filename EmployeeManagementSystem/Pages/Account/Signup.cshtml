@@ -1,0 +1,63 @@
+﻿@page
+@model EmployeeManagementSystem.Pages.Account.SignupModel
+@{
+    ViewData["Title"] = "Sign Up";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2>@ViewData["Title"]</h2>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Input.Email"></label>
+                <input asp-for="Input.Email" class="form-control" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Input.Password"></label>
+                <input asp-for="Input.Password" class="form-control" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Input.ConfirmPassword"></label>
+                <input asp-for="Input.ConfirmPassword" class="form-control" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-check">
+                    <input asp-for="Input.IsAdminRegistration" class="form-check-input" id="isAdmin" />
+                    <label asp-for="Input.IsAdminRegistration" class="form-check-label">Register as Admin</label>
+                </div>
+            </div>
+
+            <div class="mb-3 admin-code-section" style="display: none;">
+                <label asp-for="Input.AdminCode" class="form-label">Admin Registration Code</label>
+                <input asp-for="Input.AdminCode" class="form-control" />
+                <span asp-validation-for="Input.AdminCode" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary my-2">Sign Up</button>
+            <div class="mt-3 text-center">
+                <p>Already have an account? <a asp-page="./Login">Log in here</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        document.getElementById('isAdmin').addEventListener('change', function() {
+            const adminCodeSection = document.querySelector('.admin-code-section');
+            adminCodeSection.style.display = this.checked ? 'block' : 'none';
+        });
+    </script>
+}

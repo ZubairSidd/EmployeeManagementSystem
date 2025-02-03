@@ -1,0 +1,99 @@
+﻿@page
+@model EmployeeManagementSystem.Pages.Admin.EditModel
+@{
+    ViewData["Title"] = "Edit Employee";
+}
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2>Edit Employee</h2>
+        </div>
+        <div class="card-body">
+            <form method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        @if (!string.IsNullOrEmpty(Model.Input.ExistingProfileImage))
+                        {
+                            <img id="profilePreview" src="data:image/jpeg;base64,@Model.Input.ExistingProfileImage"
+                                 class="img-fluid rounded-circle mb-3"
+                                 style="max-width: 200px;"
+                                 alt="Profile Picture" />
+                        }
+
+                        <div class="mb-3">
+                            <label asp-for="Input.ProfilePicture" class="form-label">Profile Picture</label>
+                            <input asp-for="Input.ProfilePicture" type="file" class="form-control" accept="image/*" data-val="false" / />
+                            <small class="text-muted d-block">Maximum file size: 5MB</small>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Input.FirstName" class="form-label">First Name</label>
+                                <input asp-for="Input.FirstName" class="form-control" />
+                                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Input.LastName" class="form-label">Last Name</label>
+                                <input asp-for="Input.LastName" class="form-control" />
+                                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Input.MiddleName" class="form-label">Middle Name</label>
+                            <input asp-for="Input.MiddleName" class="form-control" />
+                            <span asp-validation-for="Input.MiddleName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Input.DateOfBirth" class="form-label">Date of Birth</label>
+                            <input asp-for="Input.DateOfBirth" class="form-control" type="date" />
+                            <span asp-validation-for="Input.DateOfBirth" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Input.EmployeeId" class="form-label">Employee ID</label>
+                            <input asp-for="Input.EmployeeId" class="form-control" />
+                            <span asp-validation-for="Input.EmployeeId" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Input.JobTitle" class="form-label">Job Title</label>
+                            <input asp-for="Input.JobTitle" class="form-control" />
+                            <span asp-validation-for="Input.JobTitle" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-footer bg-transparent text-end">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <a asp-page="./Index" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        document.querySelector('input[type="file"]').addEventListener('change', function(e) {
+            if (e.target.files && e.target.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.querySelector('#profilePreview').src = e.target.result;
+                };
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        });
+    </script>
+}
