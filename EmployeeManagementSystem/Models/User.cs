@@ -15,7 +15,6 @@ namespace EmployeeManagementSystem.Models
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-        // Navigation property
         public UserProfile Profile { get; set; }
 
         public bool IsAdmin { get; set; }
