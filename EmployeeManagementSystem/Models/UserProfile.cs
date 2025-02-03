@@ -1,6 +1,5 @@
 ﻿namespace EmployeeManagementSystem.Models
 {
-    // Models/UserProfile.cs
     public class UserProfile
     {
         public int Id { get; set; }
