@@ -57,7 +57,6 @@ A web-based employee management system built with ASP.NET Core 8 Razor Pages and
 ### Database Configuration
 
 1. Update the connection string in `appsettings.json`:
-```json
 {
   "ConnectionStrings": {
     "DefaultConnection": "Host=localhost;Database=employeemanagement;Username=your_username;Password=your_password"
