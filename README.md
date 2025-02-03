@@ -57,30 +57,31 @@ A web-based employee management system built with ASP.NET Core 8 Razor Pages and
 ### Database Configuration
 
 1. Update the connection string in `appsettings.json`:
+   ```json
 {
   "ConnectionStrings": {
     "DefaultConnection": "Host=localhost;Database=employeemanagement;Username=your_username;Password=your_password"
   }
 }
+```json
 
-#Apply database migrations:
-dotnet ef database update
+##Apply database migrations:
+- dotnet ef database update
 
 ##Running the Application
 
-#1. Clone the repository
+##Clone the repository
+- git clone [repository-url]
 
-git clone [repository-url]
+##Navigate to the project directory
+- cd EmployeeManagementSystem
 
-#2. Navigate to the project directory
-cd EmployeeManagementSystem
-
-#3. Run the application
-dotnet run
+##Run the application
+- dotnet run
 
 ##Admin Registration
-#To register as an admin:
+- To register as an admin:
 
-#1. Go to the signup page
-#2. Check "Register as Admin"
-#3. Use the admin registration code from appsettings.json
+- Go to the signup page
+- Check "Register as Admin"
+- Use the admin registration code from appsettings.json
