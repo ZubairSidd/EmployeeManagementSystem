@@ -6,8 +6,8 @@
         public int UserId { get; set; }
         public User User { get; set; }
 
-        public string? FirstName { get; set; }  // Make nullable
-        public string? LastName { get; set; }   // Make nullable
+        public string? FirstName { get; set; }  
+        public string? LastName { get; set; }   
         public string? MiddleName { get; set; }
         public DateTime? DateOfBirth { get; set; }
         public string? EmployeeId { get; set; }
